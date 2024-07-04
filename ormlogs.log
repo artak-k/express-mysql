@@ -1,0 +1,110 @@
+[2024-07-02T19:05:37.306Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-02T19:05:37.674Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-02T19:05:37.676Z][QUERY]: CREATE TABLE `migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-02T19:05:37.874Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-02T19:05:37.910Z]0 migrations are already loaded in the database.
+[2024-07-02T19:05:37.911Z]1 migrations were found in the source code.
+[2024-07-02T19:05:37.911Z]1 migrations are new migrations must be executed.
+[2024-07-02T19:05:37.911Z][QUERY]: START TRANSACTION
+[2024-07-02T19:05:37.915Z][QUERY]: CREATE TABLE `sessions` (`id` int NOT NULL AUTO_INCREMENT, `lastActiveDate` datetime NULL, `secret` varchar(255) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `user_id` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-02T19:05:37.959Z][QUERY]: CREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT, `password` varchar(256) NOT NULL, `username` varchar(150) NOT NULL, `lastLogin` datetime NULL, `createdAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), UNIQUE INDEX `IDX_fe0bb3f6520ee0469504521e71` (`username`), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-02T19:05:38.006Z][QUERY]: ALTER TABLE `sessions` ADD CONSTRAINT `FK_085d540d9f418cfbdc7bd55bb19` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-02T19:05:38.085Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1719947074051,"USERS1719947074051"]
+[2024-07-02T19:05:38.104Z]Migration USERS1719947074051 has been  executed successfully.
+[2024-07-02T19:05:38.105Z][QUERY]: COMMIT
+[2024-07-02T19:05:53.364Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-02T19:05:53.660Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-02T19:05:53.683Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-02T19:05:53.701Z]No migrations are pending
+[2024-07-02T20:39:14.116Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-02T20:39:14.556Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-02T20:39:14.613Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-02T20:39:14.617Z]No migrations are pending
+[2024-07-02T20:39:37.365Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-02T20:39:37.743Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-02T20:39:37.749Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-02T20:39:37.752Z]1 migrations are already loaded in the database.
+[2024-07-02T20:39:37.752Z]2 migrations were found in the source code.
+[2024-07-02T20:39:37.752Z]USERS1719947074051 is the last executed migration. It was executed on Tue Jul 02 2024 23:04:34 GMT+0400 (Armenia Standard Time).
+[2024-07-02T20:39:37.752Z]1 migrations are new migrations must be executed.
+[2024-07-02T20:39:37.753Z][QUERY]: START TRANSACTION
+[2024-07-02T20:39:37.754Z][QUERY]: ALTER TABLE `sessions` ADD `hashedToken` varchar(255) NOT NULL
+[2024-07-02T20:39:38.119Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1719952773131,"HashRefresh1719952773131"]
+[2024-07-02T20:39:38.122Z]Migration HashRefresh1719952773131 has been  executed successfully.
+[2024-07-02T20:39:38.122Z][QUERY]: COMMIT
+[2024-07-02T21:05:37.023Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-02T21:05:38.260Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-02T21:05:38.274Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-02T21:05:38.277Z]2 migrations are already loaded in the database.
+[2024-07-02T21:05:38.277Z]3 migrations were found in the source code.
+[2024-07-02T21:05:38.278Z]HashRefresh1719952773131 is the last executed migration. It was executed on Wed Jul 03 2024 00:39:33 GMT+0400 (Armenia Standard Time).
+[2024-07-02T21:05:38.278Z]1 migrations are new migrations must be executed.
+[2024-07-02T21:05:38.279Z][QUERY]: START TRANSACTION
+[2024-07-02T21:05:38.281Z][QUERY]: ALTER TABLE `sessions` DROP COLUMN `hashedToken`
+[2024-07-02T21:05:38.486Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1719954324987,"HashRefresh21719954324987"]
+[2024-07-02T21:05:38.490Z]Migration HashRefresh21719954324987 has been  executed successfully.
+[2024-07-02T21:05:38.491Z][QUERY]: COMMIT
+[2024-07-03T10:26:29.163Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T10:28:00.675Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T10:28:01.170Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-03T10:28:01.177Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-03T10:28:01.180Z]3 migrations are already loaded in the database.
+[2024-07-03T10:28:01.180Z]4 migrations were found in the source code.
+[2024-07-03T10:28:01.181Z]HashRefresh21719954324987 is the last executed migration. It was executed on Wed Jul 03 2024 01:05:24 GMT+0400 (Armenia Standard Time).
+[2024-07-03T10:28:01.181Z]1 migrations are new migrations must be executed.
+[2024-07-03T10:28:01.181Z][QUERY]: START TRANSACTION
+[2024-07-03T10:28:01.182Z][QUERY]: CREATE TABLE `files` (`id` int NOT NULL AUTO_INCREMENT, `name` varchar(256) NOT NULL, `extension` varchar(128) NOT NULL, `mimeType` varchar(128) NOT NULL, `size` varchar(128) NOT NULL, `uploadDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T10:28:01.230Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1720002475331,"FILES1720002475331"]
+[2024-07-03T10:28:01.233Z]Migration FILES1720002475331 has been  executed successfully.
+[2024-07-03T10:28:01.233Z][QUERY]: COMMIT
+[2024-07-03T11:03:31.062Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T11:03:31.584Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-03T11:03:31.588Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-03T11:03:31.589Z]4 migrations are already loaded in the database.
+[2024-07-03T11:03:31.589Z]5 migrations were found in the source code.
+[2024-07-03T11:03:31.589Z]FILES1720002475331 is the last executed migration. It was executed on Wed Jul 03 2024 14:27:55 GMT+0400 (Armenia Standard Time).
+[2024-07-03T11:03:31.590Z]1 migrations are new migrations must be executed.
+[2024-07-03T11:03:31.590Z][QUERY]: START TRANSACTION
+[2024-07-03T11:03:31.591Z][QUERY]: ALTER TABLE `files` CHANGE `size` `user_id` varchar(128) NOT NULL
+[2024-07-03T11:03:31.642Z][QUERY]: ALTER TABLE `files` DROP COLUMN `user_id`
+[2024-07-03T11:03:31.739Z][QUERY]: ALTER TABLE `files` ADD `user_id` int NOT NULL
+[2024-07-03T11:03:31.793Z][QUERY]: ALTER TABLE `files` ADD CONSTRAINT `FK_a7435dbb7583938d5e7d1376041` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-03T11:03:31.863Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1720004604552,"FILES21720004604552"]
+[2024-07-03T11:03:31.865Z]Migration FILES21720004604552 has been  executed successfully.
+[2024-07-03T11:03:31.866Z][QUERY]: COMMIT
+[2024-07-03T12:47:15.236Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T12:47:15.628Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-03T12:47:15.634Z][QUERY]: CREATE TABLE `migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T12:47:15.670Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-03T12:47:15.672Z]0 migrations are already loaded in the database.
+[2024-07-03T12:47:15.672Z]1 migrations were found in the source code.
+[2024-07-03T12:47:15.672Z]1 migrations are new migrations must be executed.
+[2024-07-03T12:47:15.672Z][QUERY]: START TRANSACTION
+[2024-07-03T12:47:15.673Z][QUERY]: CREATE TABLE `sessions` (`id` int NOT NULL AUTO_INCREMENT, `lastActiveDate` datetime NULL, `secret` varchar(255) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `user_id` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T12:47:15.718Z][QUERY]: CREATE TABLE `files` (`id` int NOT NULL AUTO_INCREMENT, `name` varchar(256) NOT NULL, `extension` varchar(128) NOT NULL, `mimeType` varchar(128) NOT NULL, `uploadDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `user_id` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T12:47:15.761Z][QUERY]: CREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT, `password` varchar(256) NOT NULL, `username` varchar(150) NOT NULL, `lastLogin` datetime NULL, `createdAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), UNIQUE INDEX `IDX_fe0bb3f6520ee0469504521e71` (`username`), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T12:47:15.787Z][QUERY]: ALTER TABLE `sessions` ADD CONSTRAINT `FK_085d540d9f418cfbdc7bd55bb19` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-03T12:47:15.830Z][QUERY]: ALTER TABLE `files` ADD CONSTRAINT `FK_a7435dbb7583938d5e7d1376041` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-03T12:47:15.875Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1720010827515,"Entities1720010827515"]
+[2024-07-03T12:47:15.878Z]Migration Entities1720010827515 has been  executed successfully.
+[2024-07-03T12:47:15.878Z][QUERY]: COMMIT
+[2024-07-03T14:45:06.937Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T14:45:07.184Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-03T14:45:07.207Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-03T14:45:07.211Z]No migrations are pending
+[2024-07-03T14:46:13.352Z][QUERY]: SELECT VERSION() AS `version`
+[2024-07-03T14:46:13.639Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'aero' AND `TABLE_NAME` = 'migrations'
+[2024-07-03T14:46:13.644Z][QUERY]: CREATE TABLE `migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T14:46:13.696Z][QUERY]: SELECT * FROM `aero`.`migrations` `migrations` ORDER BY `id` DESC
+[2024-07-03T14:46:13.698Z]0 migrations are already loaded in the database.
+[2024-07-03T14:46:13.698Z]1 migrations were found in the source code.
+[2024-07-03T14:46:13.698Z]1 migrations are new migrations must be executed.
+[2024-07-03T14:46:13.698Z][QUERY]: START TRANSACTION
+[2024-07-03T14:46:13.699Z][QUERY]: CREATE TABLE `sessions` (`id` int NOT NULL AUTO_INCREMENT, `lastActiveDate` datetime NULL, `secret` varchar(255) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `user_id` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T14:46:13.737Z][QUERY]: CREATE TABLE `files` (`id` int NOT NULL AUTO_INCREMENT, `name` varchar(256) NOT NULL, `extension` varchar(128) NOT NULL, `mimeType` varchar(128) NOT NULL, `uploadDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `user_id` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T14:46:13.781Z][QUERY]: CREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT, `password` varchar(256) NOT NULL, `username` varchar(150) NOT NULL, `lastLogin` datetime NULL, `createdAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), UNIQUE INDEX `IDX_fe0bb3f6520ee0469504521e71` (`username`), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2024-07-03T14:46:13.805Z][QUERY]: ALTER TABLE `sessions` ADD CONSTRAINT `FK_085d540d9f418cfbdc7bd55bb19` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-03T14:46:13.849Z][QUERY]: ALTER TABLE `files` ADD CONSTRAINT `FK_a7435dbb7583938d5e7d1376041` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+[2024-07-03T14:46:13.901Z][QUERY]: INSERT INTO `aero`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1720017965255,"DB1720017965255"]
+[2024-07-03T14:46:13.903Z]Migration DB1720017965255 has been  executed successfully.
+[2024-07-03T14:46:13.903Z][QUERY]: COMMIT
